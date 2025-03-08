@@ -1,8 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useReducer } from "react";
 import { styles } from "@/styles/auth.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/theme";
+import { useSSO } from "@clerk/clerk-expo";
+import { Link, Redirect, useRouter } from "expo-router";
 
 export default function login() {
   return (
@@ -27,16 +29,15 @@ export default function login() {
       </View>
       {/* Login Section*/}
       <View style={styles.loginSection}>
-        <TouchableOpacity
-          style={styles.googleButton}
-          onPress={() => console.log("continue with google")}
-          activeOpacity={0.9}
-        >
-          <View style={styles.googleIconContainer}>
-            <Ionicons name="logo-google" size={20} color={COLORS.surface} />
-          </View>
-          <Text style={styles.googleButtonText}>Continue with Google</Text>
-        </TouchableOpacity>
+        <Link href={"/(auth)/sign-up"}>
+          <TouchableOpacity style={styles.googleButton} activeOpacity={0.9}>
+            <View style={styles.googleIconContainer}>
+              <Ionicons name="logo-google" size={20} color={COLORS.surface} />
+            </View>
+            <Text style={styles.googleButtonText}>Continue with Google</Text>
+          </TouchableOpacity>
+        </Link>
+
         <Text style={styles.termsText}>
           By continuing, you aggree to our Terms and Privacy policy
         </Text>
