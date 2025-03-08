@@ -6,7 +6,7 @@ export default function AuthRoutesLayout() {
   console.log("isSignedIN", isSignedIn);
 
   if (isSignedIn) {
-    return <Redirect href={"/"} />;
+    return <Redirect href={"/(tabs)"} />;
   }
   // redirect to login.tsx
   return <Stack screenOptions={{ headerShown: false }} />;

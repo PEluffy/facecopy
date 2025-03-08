@@ -7,6 +7,7 @@ import { useSSO } from "@clerk/clerk-expo";
 import { Link, Redirect, useRouter } from "expo-router";
 
 export default function login() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.brandSection}>
@@ -29,14 +30,16 @@ export default function login() {
       </View>
       {/* Login Section*/}
       <View style={styles.loginSection}>
-        <Link href={"/(auth)/sign-up"}>
-          <TouchableOpacity style={styles.googleButton} activeOpacity={0.9}>
-            <View style={styles.googleIconContainer}>
-              <Ionicons name="logo-google" size={20} color={COLORS.surface} />
-            </View>
-            <Text style={styles.googleButtonText}>Continue with Google</Text>
-          </TouchableOpacity>
-        </Link>
+        <TouchableOpacity
+          style={styles.googleButton}
+          activeOpacity={0.9}
+          onPress={() => router.push("/sign-up")}
+        >
+          <View style={styles.googleIconContainer}>
+            <Ionicons name="logo-google" size={20} color={COLORS.surface} />
+          </View>
+          <Text style={styles.googleButtonText}>Continue with Google</Text>
+        </TouchableOpacity>
 
         <Text style={styles.termsText}>
           By continuing, you aggree to our Terms and Privacy policy

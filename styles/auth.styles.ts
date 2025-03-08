@@ -1,4 +1,3 @@
-// styles/auth.styles.ts
 import { COLORS } from "@/constants/theme";
 import { StyleSheet, Dimensions } from "react-native";
 
@@ -8,6 +7,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
+    alignItems: "center",
+    paddingHorizontal: 24,
   },
   brandSection: {
     alignItems: "center",
@@ -90,5 +91,66 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: COLORS.grey,
     maxWidth: 280,
+  },
+
+  // SIGNUP FORM STYLES
+  signupContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
+    width: "100%",
+  },
+  signupTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: COLORS.primary,
+    marginBottom: 16,
+  },
+  inputField: {
+    width: "100%",
+    maxWidth: 350,
+    backgroundColor: COLORS.white,
+    padding: 14,
+    borderRadius: 12,
+    fontSize: 16,
+    color: COLORS.grey,
+    marginBottom: 12,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  signupButton: {
+    width: "100%",
+    maxWidth: 350,
+    backgroundColor: COLORS.primary,
+    paddingVertical: 14,
+    alignItems: "center",
+    borderRadius: 12,
+    marginTop: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  signupButtonText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.white,
+  },
+  verificationText: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: COLORS.grey,
+    marginBottom: 8,
   },
 });
