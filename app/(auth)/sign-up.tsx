@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, TextInput, Button, View, TouchableOpacity } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter, Link } from "expo-router";
 import { styles } from "@/styles/auth.styles";
 
 export default function SignUpScreen() {
@@ -84,8 +84,14 @@ export default function SignUpScreen() {
         secureTextEntry={true}
         onChangeText={(password) => setPassword(password)}
       />
-      <div id="clerk-captcha"></div>
+      <Text id="clerk-captcha"></Text>
       <Button title="Continue" onPress={onSignUpPress} />
+      <View>
+        <Text style={styles.termsText}>have acc</Text>
+        <Link href="/sign-in">
+          <Text>Sign in</Text>
+        </Link>
+      </View>
     </View>
   );
 }
