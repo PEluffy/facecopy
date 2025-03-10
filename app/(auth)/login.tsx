@@ -5,9 +5,27 @@ import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/theme";
 import { useSSO } from "@clerk/clerk-expo";
 import { Link, Redirect, useRouter } from "expo-router";
+import * as AuthSession from "expo-auth-session";
 
 export default function login() {
+  const { startSSOFlow } = useSSO();
   const router = useRouter();
+  const handleSignUp = async () => {
+    try {
+      const { createdSessionId, setActive, signIn, signUp } =
+        await startSSOFlow({
+          strategy: "oauth_google",
+          // Defaults to current path
+          redirectUrl: AuthSession.makeRedirectUri(),
+        });
+      if (setActive && createdSessionId) {
+        setActive!({ session: createdSessionId });
+        router.replace("/(tabs)");
+      }
+    } catch (err) {
+      console.error(JSON.stringify(err, null, 2));
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.brandSection}>
@@ -33,7 +51,7 @@ export default function login() {
         <TouchableOpacity
           style={styles.googleButton}
           activeOpacity={0.9}
-          onPress={() => router.push("/sign-up")}
+          onPress={handleSignUp}
         >
           <View style={styles.googleIconContainer}>
             <Ionicons name="logo-google" size={20} color={COLORS.surface} />
